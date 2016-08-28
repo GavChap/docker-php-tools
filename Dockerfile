@@ -1,4 +1,4 @@
-FROM php:7.0.9-cli
+FROM php:7.0-cli
 MAINTAINER Andrew Barlow <andrew.barlow@gmail.com>
 
 # Lets try and be as non-interactive as possible
