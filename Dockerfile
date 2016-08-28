@@ -34,7 +34,6 @@ RUN apt-get update && \
     wget && \
     apt-get clean && \
     apt-get autoremove && \
-    dpkg -l | grep '^rc' | awk '{print $2}' | xargs dpkg --purge && \
     rm -r /var/lib/apt/lists/*
 
 # Install some common PHP extensions
