@@ -56,8 +56,7 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer && \
 # Install our tools
 RUN composer install -v --no-ansi --no-progress --no-dev --no-suggest -d $COMPOSER_HOME
 
-# Set up the volumes and working directory
-VOLUME ["/app"]
+# Set up the working directory
 WORKDIR /app
 
 # Default action is to run PHP interactively
