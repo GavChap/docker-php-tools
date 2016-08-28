@@ -1,0 +1,25 @@
+{
+  "name": "schodemeiss/docker-php-tools",
+  "description": "PHP QA Tools bundled inside a single Docker Container",
+  "type": "project",
+  "require": {
+    "pdepend/pdepend": "2.2.4",
+    "friendsofphp/php-cs-fixer": "1.12.0",
+    "sebastian/phpcpd": "2.0.4",
+    "squizlabs/php_codesniffer": "3.0.0a1",
+    "block8/php-docblock-checker": "1.1.0",
+    "phploc/phploc": "3.0.1",
+    "phpmd/phpmd": "2.4.3",
+    "phpunit/phpunit": "5.5.4"
+  },
+  "authors": [
+    {
+      "name": "Andrew Barlow",
+      "email": "andrew.barlow@gmail.com"
+    }
+  ],
+  "homepage": "http://mrbarlow.co.uk",
+  "support": {
+    "email": "andrew.barlow@gmail.com"
+  }
+}
