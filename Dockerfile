@@ -32,6 +32,9 @@ RUN apt-get update && \
     subversion \
     unzip \
     wget && \
+    apt-get clean && \
+    apt-get autoremove && \
+    dpkg -l | grep '^rc' | awk '{print $2}' | xargs dpkg --purge && \
     rm -r /var/lib/apt/lists/*
 
 # Install some common PHP extensions
@@ -54,7 +57,7 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer && \
     php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer && rm -rf /tmp/composer-setup.php
 
 # Install our tools
-RUN composer install -v --no-ansi --no-progress --no-dev --no-suggest -d $COMPOSER_HOME
+RUN composer install -v --no-ansi --no-progress --no-dev --no-suggest -d $COMPOSER_HOME && composer clear-cache
 
 # Set up the working directory
 WORKDIR /app
