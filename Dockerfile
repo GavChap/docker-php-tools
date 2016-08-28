@@ -17,8 +17,8 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_NO_INTERACTION 1
 
 # Grab the requirements of Composer
-RUN apt-get update && \
-    apt-get install -y \
+RUN apt-get update \
+    && apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libmcrypt-dev \
@@ -31,17 +31,17 @@ RUN apt-get update && \
     git \
     subversion \
     unzip \
-    wget && \
-    apt-get clean && \
-    apt-get autoremove && \
-    rm -r /var/lib/apt/lists/*
+    wget \
+    && apt-get clean \
+    && apt-get autoremove\
+    && rm -r /var/lib/apt/lists/*
 
 # Install some common PHP extensions
-RUN docker-php-ext-install bcmath mcrypt zip bz2 mbstring pcntl xsl && \
-    docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
-    docker-php-ext-install gd && \
-    docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && \
-    docker-php-ext-install ldap
+RUN docker-php-ext-install bcmath mcrypt zip bz2 mbstring pcntl xsl \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install gd \
+    && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
+    && docker-php-ext-install ldap
 
 # Add our PHP settings file
 ADD php-tools.ini /usr/local/etc/php/conf.d/php-tools.ini
@@ -50,13 +50,14 @@ ADD php-tools.ini /usr/local/etc/php/conf.d/php-tools.ini
 ADD composer.json /composer/composer.json
 
 # Programatically install composer, including signature check
-RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer && \
-    curl -o /tmp/composer-setup.sig https://composer.github.io/installer.sig && \
-    php -r "if (hash('SHA384', file_get_contents('/tmp/composer-setup.php')) !== trim(file_get_contents('/tmp/composer-setup.sig'))) { unlink('/tmp/composer-setup.php'); echo 'Invalid installer' . PHP_EOL; exit(1); }" && \
-    php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer && rm -rf /tmp/composer-setup.php
+RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
+    && curl -o /tmp/composer-setup.sig https://composer.github.io/installer.sig \
+    && php -r "if (hash('SHA384', file_get_contents('/tmp/composer-setup.php')) !== trim(file_get_contents('/tmp/composer-setup.sig'))) { unlink('/tmp/composer-setup.php'); echo 'Invalid installer' . PHP_EOL; exit(1); }" \
+    && php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer && rm -rf /tmp/composer-setup.php
 
-# Install our tools
-RUN composer install -v --no-ansi --no-progress --no-dev --no-suggest -d $COMPOSER_HOME && composer clear-cache
+# Install our tools and then clear the cache
+RUN composer install -v --no-ansi --no-progress --no-dev --no-suggest -d $COMPOSER_HOME \
+    && composer clear-cache
 
 # Set up the working directory
 WORKDIR /app
