@@ -35,7 +35,7 @@ This will run "composer" with the "install" argument.
 Any of the other tools can be called with their respective usages (see their GitHub's for details).
 
 ## Helper Scripts
-###Powershell
+### Powershell
 A Powershell function alias script can be found here: https://github.com/schodemeiss/docker-php-tools/blob/master/php-tools-aliases.ps1
 
 This will allow you to run "composer" without having to run any docker specific commands.
