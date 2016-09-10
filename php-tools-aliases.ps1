@@ -12,6 +12,10 @@ function run-php-tools {
 }
 
 # Create some functions to call our tools
+function behat {
+    run-php-tools behat @args
+}
+
 function composer {
     run-php-tools composer --no-ansi @args
 }
@@ -38,4 +42,16 @@ function phpcs {
 
 function phpmd {
     run-php-tools phpmd @args
+}
+
+function phing {
+    run-php-tools phing @args
+}
+
+function robo {
+    run-php-tools robo @args
+}
+
+function php {
+    run-php-tools php @args
 }
