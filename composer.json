@@ -12,7 +12,7 @@
     "phpmd/phpmd": "2.*",
     "phpunit/phpunit": "6.*",
     "phing/phing": "2.*",
-    "codegyre/robo": "1.*",
+    "codegyre/robo": "1.0.0-beta1",
     "behat/behat": "3.*"
   },
   "authors": [
