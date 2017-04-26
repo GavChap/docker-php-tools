@@ -5,18 +5,18 @@ A collection of PHP tools to aid in the development and QA of PHP applications.
 
 ## Current Tools
 
-* "php": "7.0.*"
+* "php": "7.1.*"
 * "composer": "*" (always latest)
 * "pdepend/pdepend": "2.*"
-* "friendsofphp/php-cs-fixer": "1.*"
-* "sebastian/phpcpd": "2.*"
-* "squizlabs/php_codesniffer": "3.0.0RC1"
+* "friendsofphp/php-cs-fixer": "2.*"
+* "sebastian/phpcpd": "3.*"
+* "squizlabs/php_codesniffer": "3.0.0RC4"
 * "block8/php-docblock-checker": "1.*"
 * "phploc/phploc": "3.*"
 * "phpmd/phpmd": "2.*"
-* "phpunit/phpunit": "5.*"
+* "phpunit/phpunit": "6.*"
 * "phing/phing": "2.*"
-* "codegyre/robo": "1.0.0-RC2"
+* "codegyre/robo": "1.*"
 * "behat/behat": "3.*"
 
 ## Usage
