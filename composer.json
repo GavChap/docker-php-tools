@@ -15,7 +15,8 @@
     "consolidation/robo": "1.*",
     "behat/behat": "3.*",
     "phpstan/phpstan": "0.7.*",
-    "phpstan/phpstan-doctrine": "0.7.*"
+    "phpstan/phpstan-doctrine": "0.7.*",
+    "phpstan/phpstan-guzzle": "0.7.*"
   },
   "authors": [
     {
